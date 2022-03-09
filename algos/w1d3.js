@@ -1,4 +1,4 @@
-        /* 
+/* 
   Given in an alumni interview in 2021.
   String Encode
   You are given a string that may contain sequences of consecutive characters.
@@ -23,29 +23,10 @@ const str4 = "bbcc";
 const expected4 = "bbcc";
 
 const str7 = "aaabbbaaa";
-const expected7 = "a3b3a3";
+const expected7 = "a3b3a3"
 
-str2=[]
-
-function encode(str){
-    z=1
-    for (i=1; i > str.length; i++){
-        if (str[i] == str[i-1]){
-            z += 1;
-        } else{
-            str2.push(i-1)
-            str2.push(z)
-            z=1
-        }
-    }
-    if(str.length > str2.length){
-        return str2
-    } else{
-        return str
-    }
-}
-console.log(encode("aaaabbcddd"))
-
+def encodeStr():
+  
 
 /**
  * Encodes the given string such that duplicate characters appear once followed
@@ -87,7 +68,3 @@ const expected6 = "aaabbccccccccccccdddddddddd";
 function decodeStr(str) { }
 
 module.exports = { decodeStr };
-
-for (i=0; i > str.length; i++);
-    if (str[i] == str[i-1]);
-        z += 1

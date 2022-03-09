@@ -1,89 +1,77 @@
-/* 
-  Given an arr and a separator string, output a string of every item in the array separated by the separator.
-  
-  No trailing separator at the end
-  Default the separator to a comma with a space after it if no separator is provided
+/*  Given in an alumni interview in 2021.
+String Encode
+You are given a string that may contain sequences of consecutive characters.
+Create a function to shorten a string by including the character,
+then the number of times it appears. 
+
+
+If final result is not shorter (such as "bb" => "b2" ),
+return the original string.
 */
 
-const arr1 = [1, 2, 3];
-const separator1 = ", ";
-const expected1 = "1, 2, 3";
+const str1 = "aaaabbcddd";
+const expected1 = "a4b2c1d3";
 
-const arr2 = [1, 2, 3];
-const separator2 = "-";
-const expected2 = "1-2-3";
+const str2 = "";
+const expected2 = "";
 
-const arr3 = [1, 2, 3];
-const separator3 = " - ";
-const expected3 = "1 - 2 - 3";
+const str3 = "a";
+const expected3 = "a";
 
-const arr4 = [1];
-const separator4 = ", ";
-const expected4 = "1";
+const str4 = "bbcc";
+const expected4 = "bbcc";
 
-const arr5 = [];
-const separator5 = ", ";
-const expected5 = "";
+const str7 = "aaabbbaaa";
+const expected7 = "a3b3a3"
+* character occurs more than two time.
+* - Time: O(?).
+* - Space: O(?).
+* @param {string} str The string to encode.
+* @returns {string} The given string encoded.
+*/
 
-// 1 make a function that takes in 2 parameters
-// create an empty string for the output
-// array length = 1 or 0? return arr[0] or empty string
-// loop through the array
-    // push stuff into my output from the array
-    // push separator into my output from the array
-// return output
+function encodeStr(str) { 
+    if(str.length > 0){
+        var new_str = "";
+        var sum = 0;
 
+        for(var i=0; i<str.length; i++){
+            
+            while (str[i] == str[i+1]) {
+                sum += 1;
+            }
+            new_str.push(str[i]);
+            new_str.push(sum);
+            sum = 0;
+        }
+    }
+    else{r}turn false
 
-
-/**
- * Converts the given array into a string of items separated by the given separator.
- * - Time: O(?).
- * - Space: O(?).
- * @param {Array<string|number|boolean>} arr The items to be joined as a string.
- * @param {string} separator To separate each item of the given arr.
- * @returns {string} The given array items as a string separated by the given separator.
- */
-function join(arr, separator) {
-    
 }
 
 
-//-------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+
 
 
 /* 
-  Acronyms
-  Create a function that, given a string, returns the string’s acronym 
-  (first letter of each word capitalized). 
-  Do it with .split first if you need to, then try to do it without
+String Decode  
 */
 
-const str1 = " there's no free lunch - gotta pay yer way. ";
-const expected6 = "TNFL-GPYW";
+const str5 = "a3b2c1d3";
+const expected5 = "aaabbcddd";
 
-const str2 = "Live from New York, it's Saturday Night! ";
-const expected7 = "LFNYISN";
-
+const str6 = "a3b2c12d10";
+const expected6 = "aaabbccccccccccccdddddddddd";
 /**
- * Turns the given str into an acronym.
- * - Time: O(?).
- * - Space: O(?).
- * @param {string} str A string to be turned into an acronym.
- * @returns {string} The given str converted into an acronym.
- */
-function acronymize(str) {}
+* Decodes the given string by duplicating each character by the following int
+* amount if there is an int after the character.
+* - Time: O(?).
+* - Space: O(?).
+* @param {string} str An encoded string with characters that may have an int
+*    after indicating how many times the character occurs.
+* @returns {string} The given str decoded / expanded.
+*/
+function decodeStr(str) { }
 
-
-// create a function that takes in a string
-// create an empty output
-// split on " "
-// loop through the resulting array
-    //pass the string[0].upper() into output
-
-
-//create a function that takes in a string
-// create empty output
-// loop through input string
-    // if index == 0 && string[index] != " ", push string[index] into output
-    // if current letter is a space, pass string[index + 1].upper() to output
-// return my output
+module.exports = { decodeStr };

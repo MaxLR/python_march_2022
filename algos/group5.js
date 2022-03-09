@@ -1,75 +1,97 @@
 /* 
-  Given an arr and a separator string, output a string of every item in the array separated by the separator.
+  Given in an alumni interview in 2021.
+  String Encode
+  You are given a string that may contain sequences of consecutive characters.
+  Create a function to shorten a string by including the character,
+  then the number of times it appears. 
   
-  No trailing separator at the end
-  Default the separator to a comma with a space after it if no separator is provided
-*/
+  
+  If final result is not shorter (such as "bb" => "b2" ),
+  return the original string.
+  */
 
-const arr1 = [1, 2, 3];
-const separator1 = ", ";
-const expected1 = "1, 2, 3";
+  const str1 = "aaaabbcddd";
+  const expected1 = "a4b2c1d3";
+  
+  const str2 = "";
+  const expected2 = "";
+  
+  const str3 = "a";
+  const expected3 = "a";
+  
+  const str4 = "bbcc";
+  const expected4 = "bbcc";
+  
+  const str7 = "aaabbbaaa";
+  const expected7 = "a3b3a3"
 
-const arr2 = [1, 2, 3];
-const separator2 = "-";
-const expected2 = "1-2-3";
-
-const arr3 = [1, 2, 3];
-const separator3 = " - ";
-const expected3 = "1 - 2 - 3";
-
-const arr4 = [1];
-const separator4 = ", ";
-const expected4 = "1";
-
-const arr5 = [];
-const separator5 = ", ";
-const expected5 = "";
-
-/**
- * Converts the given array into a string of items separated by the given separator.
- * - Time: O(?).
- * - Space: O(?).
- * @param {Array<string|number|boolean>} arr The items to be joined as a string.
- * @param {string} separator To separate each item of the given arr.
- * @returns {string} The given array items as a string separated by the given separator.
- */
-function join(arr, separator) {
-  result = "";  
-  for (let i = 0; i < arr.length; i++) {
-    if(i === arr.length - 1){
-      result += arr[i];
-      console.log(results)
-      return
-    }  
-    else{
-      result += (arr[i] + seperator)
-    }  
-  }
+  //if expected.length == str.length return str
+  //counter = 0
+  //expected = ""0
+  // for loop if arr[i] == arr[i +1] counter ++
+  //    if arr[i] != arr[i + 1]
+//          counter = 0 (resets counter)
+function encodeStr(str) {
+    var new_str = "";
+    var counter = 1;
+    //counter
+    for(var i=0; i<arr.length; i++){
+        if(str[i] == str[i+1]){
+            counter++;
+        } 
+        if (str[i] != str[i+1]){
+            new_str += str[i];
+            new_str += counter
+            //reset
+            counter = 1
+        }
+    }
+    if (new_str.length == str.length) {
+        return str
+    } else {
+        return new_str
+    }
 }
 
+console.log(encodeStr(str4))
 
-
-//-------------------------------------------------------------------------------------------------------------------------
-
-
-/* 
-  Acronyms
-  Create a function that, given a string, returns the string’s acronym 
-  (first letter of each word capitalized). 
-  Do it with .split first if you need to, then try to do it without
-*/
-
-const str1 = " there's no free lunch - gotta pay yer way. ";
-const expected6 = "TNFL-GPYW";
-
-const str2 = "Live from New York, it's Saturday Night! ";
-const expected7 = "LFNYISN";
-
-/**
- * Turns the given str into an acronym.
- * - Time: O(?).
- * - Space: O(?).
- * @param {string} str A string to be turned into an acronym.
- * @returns {string} The given str converted into an acronym.
- */
-function acronymize(str) {}
+  /**
+   * Encodes the given string such that duplicate characters appear once followed
+   * by a number representing how many times the char occurs only if the
+   * character occurs more than two time.
+   * - Time: O(?).
+   * - Space: O(?).
+   * @param {string} str The string to encode.
+   * @returns {string} The given string encoded.
+   */
+  
+  function encodeStr(str) { }
+  
+  
+  
+  //-----------------------------------------------------------------------------------------------------
+  
+  
+  
+  /* 
+    String Decode  
+  */
+  
+  const str5 = "a3b2c1d3";
+  const expected5 = "aaabbcddd";
+  
+  const str6 = "a3b2c12d10";
+  const expected6 = "aaabbccccccccccccdddddddddd";
+  
+  /**
+   * Decodes the given string by duplicating each character by the following int
+   * amount if there is an int after the character.
+   * - Time: O(?).
+   * - Space: O(?).
+   * @param {string} str An encoded string with characters that may have an int
+   *    after indicating how many times the character occurs.
+   * @returns {string} The given str decoded / expanded.
+   */
+  function decodeStr(str) { }
+  
+  module.exports = { decodeStr };
