@@ -1,0 +1,14 @@
+<h1>All Students</h1>
+<!-- looping through our input list of students -->
+{% for student in students %}
+<!-- for each item in our list, print the name & id -->
+<p>{{student["name"]}}'s id is: {{student["id"]}}</p>
+{% endfor %}
+
+
+<h1>My Numbers</h1>
+<!-- looping through our input list of numbers -->
+{% for num in my_nums %}
+<!-- for each number in our list, create a <p> tag w/ the number in it -->
+<p>{{num}}</p>
+{% endfor %}

@@ -1,0 +1,33 @@
+<!-- how you would import an image file from within the img folder in static -->
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='css/style.css') }}"
+/>
+
+
+<!-- how you would import a javascript file from within the js folder in static -->
+<link
+    type="text/javascript"
+    href="{{ url_for('static', filename='js/my_script.js') }}"
+/>
+
+
+<!-- how you would import an image file from within the img folder in static -->
+<img src="{{ url_for('static', filename='img/my_img.png) }}"/>
+
+
+
+<h1>Hello From the Index!!</h1>
+
+<!-- for loop using our input *times* -->
+{% for x in range(0, times): %}
+    <!-- printing our input variable *my_string* -->
+    <p>{{my_string}}</p>
+{% endfor %}
+
+
+<!-- conditionally printing a header if input *my_string* == "Hello" -->
+{% if my_string == "Hello" %}
+    <h1>My String was {{my_string}}</h1>
+{% endif %}
