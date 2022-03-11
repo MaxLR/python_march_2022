@@ -1,0 +1,14 @@
+<form action="/login" method="post">
+    <p>Username:
+        <input type="text" name="username">
+    </p>
+    <p>Email:
+        <input type="text" name="email">
+    </p>
+    <input type="hidden" name="hidden_input" value="Hello from hidden!">
+    <input type="submit" value="Submit">
+</form>
+
+
+
+<p>{{session["username"]}} {{session["email"]}} {{session["hidden_input"]}}</p>
