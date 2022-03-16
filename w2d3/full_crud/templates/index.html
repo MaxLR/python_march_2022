@@ -1,0 +1,11 @@
+<h1>All Dogs!!</h1>
+
+{% for dog in all_dogs %}
+<p>{{dog.name}} is {{dog.age}}</p>
+<a href="/dogs/{{dog.id}}">View</a>
+<a href="/dogs/edit/{{dog.id}}">Edit</a>
+<a href="/dogs/{{dog.id}}/delete">Delete Dog</a>
+{% endfor %}
+
+<br>
+<a href="/dogs/new">New Dog</a>
