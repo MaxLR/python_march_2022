@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, request  # Import Flask to allow us to create our app
-from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask_app.models.dog import Dog
 
@@ -8,8 +7,7 @@ from flask_app.models.dog import Dog
 
 @app.route("/")
 def index():
-    mysql = connectToMySQL("dogs_db") #how we connect to a database
-    dogs = mysql.query_db("SELECT * FROM dogs;")
+    dogs = Dog.get_all_dogs()
     return render_template("index.html", all_dogs = dogs)
 
 @app.route("/dogs/new")
@@ -19,7 +17,7 @@ def new_dog():
 @app.route("/dogs/<int:id>")
 def show_dog(id):
     data = { "id": id }
-    dog = Dog.get_one(data)
+    dog = Dog.get_one_with_collars(data)
     return render_template("show_dog.html", dog = dog)
 
 

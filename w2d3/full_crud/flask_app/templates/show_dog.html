@@ -1,6 +1,21 @@
     <label>Name: {{dog.name}}</label>
     <label>Age:  {{dog.age}}</label>
     <label>Hair Color: {{dog.hair_color}}</label>
+<br><br>
+
+{% for collar in dog.collars %}
+<p>{{dog.name}} has a {{collar.color}} collar</p>
+{% endfor %}
+
+
+<br><br>
+
+<form action="/collars/create" method="post">
+    <input type="hidden" name="dog_id" value="{{dog.id}}">
+    <label for="Color">Collar Color:</label>
+    <input type="text" name="color">
+    <input type="submit" value="Add new Collar for {{dog.name}}">
+</form>
 
 <br>
 <a href="/">Home</a>

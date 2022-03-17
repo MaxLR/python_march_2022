@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models import collar
 
 class Dog:
     def __init__(self, data):
@@ -20,12 +21,44 @@ class Dog:
 
 
     @classmethod
+    def get_all_dogs(cls):
+        mysql = connectToMySQL("dogs_db") #how we connect to a database
+        results = mysql.query_db("SELECT * FROM dogs;")
+        all_dogs = []
+        if results:
+            for row in results:
+                all_dogs.append(cls(row))
+            return all_dogs
+
+
+    @classmethod
     def get_one(cls, data):
         query = "SELECT * FROM dogs WHERE id = %(id)s;"
         results = connectToMySQL("dogs_db").query_db(query, data)
         if results:
             return cls(results[0])
 
+
+    @classmethod
+    def get_one_with_collars(cls, data):
+        query = "SELECT * FROM dogs LEFT JOIN collars ON dogs.id = collars.dog_id WHERE dogs.id = %(id)s;"
+        results = connectToMySQL("dogs_db").query_db(query, data)
+        if results:
+            dog = cls(results[0])
+            if results[0]["collars.id"]:
+                dog.collars = []
+                for row in results:
+                    data = {
+                        #specifying collars, because our table has 2 fields called ID, one for collars, one for dogs
+                        "id": row["collars.id"], 
+                        "color": row["color"],
+                        "dog_id": row["dog_id"],
+                        "created_at": row["collars.created_at"],
+                        "updated_at": row["collars.updated_at"]
+                    }
+                    temp_collar = collar.Collar(data)
+                    dog.collars.append(temp_collar)
+            return dog
 
     @classmethod
     def update_dog(cls, data):

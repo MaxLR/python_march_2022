@@ -1,6 +1,6 @@
 from flask import Flask  # Import Flask to allow us to create our app
 from flask_app import app
-from flask_app.controllers import dogs
+from flask_app.controllers import dogs, collars
 
 
 # Return the string 'Hello World!' as a response
