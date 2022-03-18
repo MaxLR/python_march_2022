@@ -1,3 +1,4 @@
+from flask import flash
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import collar
 
@@ -70,3 +71,27 @@ class Dog:
     def delete_dog(cls, data):
         query = "DELETE FROM dogs WHERE id = %(id)s;"
         connectToMySQL("dogs_db").query_db(query, data)
+
+
+    @staticmethod
+    def validate_dog(data):
+        is_valid = True
+
+        if len(data["name"]) <= 1:
+            is_valid = False
+            flash("A new dog's name must be at least 2 characters long.")
+        if len(data["age"]) < 1:
+            is_valid = False
+            flash("Dogs have to have an age")
+        elif data["age"].isnumeric():
+            if int(data["age"]) < 0:
+                is_valid = False
+                flash("Dogs can't be younger than 0!")
+        else:
+            is_valid = False
+            flash("Please enter an actual number")
+        if len(data["hair_color"]) <= 1:
+            is_valid = False
+            flash("Please enter a hair color with at least 2 characters!")
+
+        return is_valid

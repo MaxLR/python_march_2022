@@ -31,14 +31,18 @@ def edit_dog(id):
 
 @app.route("/dogs/create", methods = ["POST"])
 def create_dog():
-    Dog.create_dog(request.form)
-    return redirect('/')
-
+    if Dog.validate_dog(request.form):
+        Dog.create_dog(request.form)
+        return redirect('/')
+    return redirect("/dogs/new")
 
 @app.route("/dogs/update", methods = ["POST"])
 def update_dog():
-    Dog.update_dog(request.form)
-    return redirect('/')
+    if Dog.validate_dog(request.form):
+        Dog.update_dog(request.form)
+        return redirect('/')
+    dog_id = request.form["id"]
+    return redirect(f"/dogs/edit/{dog_id}")
 
 
 @app.route("/dogs/<int:id>/delete")

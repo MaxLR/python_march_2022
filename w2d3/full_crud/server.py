@@ -1,4 +1,3 @@
-from flask import Flask  # Import Flask to allow us to create our app
 from flask_app import app
 from flask_app.controllers import dogs, collars
 
